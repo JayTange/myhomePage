@@ -17,7 +17,6 @@ public class UserVoMapperTest {
     UserVoMapper userVoMapper;
 
     @Test
-    @Transactional
     public void testInsert() throws Exception{
         UserVo userVo = new UserVo();
         userVo.setUserName("小w");

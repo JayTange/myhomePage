@@ -2,6 +2,7 @@ package com.wargod.domain.vo;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class GoodVoExample {
@@ -492,6 +493,126 @@ public class GoodVoExample {
 
         public Criteria andGoodsStockNotBetween(Integer value1, Integer value2) {
             addCriterion("goods_stock not between", value1, value2, "goodsStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeIsNull() {
+            addCriterion("goods_seckill_begintime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeIsNotNull() {
+            addCriterion("goods_seckill_begintime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeEqualTo(Date value) {
+            addCriterion("goods_seckill_begintime =", value, "goodsSeckillBegintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeNotEqualTo(Date value) {
+            addCriterion("goods_seckill_begintime <>", value, "goodsSeckillBegintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeGreaterThan(Date value) {
+            addCriterion("goods_seckill_begintime >", value, "goodsSeckillBegintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("goods_seckill_begintime >=", value, "goodsSeckillBegintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeLessThan(Date value) {
+            addCriterion("goods_seckill_begintime <", value, "goodsSeckillBegintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeLessThanOrEqualTo(Date value) {
+            addCriterion("goods_seckill_begintime <=", value, "goodsSeckillBegintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeIn(List<Date> values) {
+            addCriterion("goods_seckill_begintime in", values, "goodsSeckillBegintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeNotIn(List<Date> values) {
+            addCriterion("goods_seckill_begintime not in", values, "goodsSeckillBegintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeBetween(Date value1, Date value2) {
+            addCriterion("goods_seckill_begintime between", value1, value2, "goodsSeckillBegintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillBegintimeNotBetween(Date value1, Date value2) {
+            addCriterion("goods_seckill_begintime not between", value1, value2, "goodsSeckillBegintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeIsNull() {
+            addCriterion("goods_seckill_endtime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeIsNotNull() {
+            addCriterion("goods_seckill_endtime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeEqualTo(Date value) {
+            addCriterion("goods_seckill_endtime =", value, "goodsSeckillEndtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeNotEqualTo(Date value) {
+            addCriterion("goods_seckill_endtime <>", value, "goodsSeckillEndtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeGreaterThan(Date value) {
+            addCriterion("goods_seckill_endtime >", value, "goodsSeckillEndtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("goods_seckill_endtime >=", value, "goodsSeckillEndtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeLessThan(Date value) {
+            addCriterion("goods_seckill_endtime <", value, "goodsSeckillEndtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeLessThanOrEqualTo(Date value) {
+            addCriterion("goods_seckill_endtime <=", value, "goodsSeckillEndtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeIn(List<Date> values) {
+            addCriterion("goods_seckill_endtime in", values, "goodsSeckillEndtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeNotIn(List<Date> values) {
+            addCriterion("goods_seckill_endtime not in", values, "goodsSeckillEndtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeBetween(Date value1, Date value2) {
+            addCriterion("goods_seckill_endtime between", value1, value2, "goodsSeckillEndtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSeckillEndtimeNotBetween(Date value1, Date value2) {
+            addCriterion("goods_seckill_endtime not between", value1, value2, "goodsSeckillEndtime");
             return (Criteria) this;
         }
     }

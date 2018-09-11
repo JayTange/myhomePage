@@ -25,6 +25,8 @@ CREATE TABLE t_goods(
   goods_detail TEXT DEFAULT NULL COMMENT '商品的详情介绍',
   goods_price DECIMAL(10,2) DEFAULT 0.00 COMMENT '商品单价',
   goods_stock INT DEFAULT 0 COMMENT '商品库存，-1表示没有限制',
+  goods_seckill_begintime TIMESTAMP NOT NULL COMMENT '秒杀开始时间',
+  goods_seckill_endtime TIMESTAMP NOT NULL COMMENT '秒杀结束时间',
   PRIMARY KEY (gid)
 );
 

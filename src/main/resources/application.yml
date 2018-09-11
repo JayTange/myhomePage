@@ -7,6 +7,10 @@ spring:
     suffix: .html
     encoding: UTF-8
     cache: false
+    servlet:
+      content-type: text/html
+    mode: html
+
 server:
   port: 8080
 

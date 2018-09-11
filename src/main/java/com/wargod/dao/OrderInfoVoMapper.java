@@ -3,6 +3,8 @@ package com.wargod.dao;
 import com.wargod.domain.vo.OrderInfoVo;
 import com.wargod.domain.vo.OrderInfoVoExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 

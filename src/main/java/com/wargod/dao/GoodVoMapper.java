@@ -3,6 +3,8 @@ package com.wargod.dao;
 import com.wargod.domain.vo.GoodVo;
 import com.wargod.domain.vo.GoodVoExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 

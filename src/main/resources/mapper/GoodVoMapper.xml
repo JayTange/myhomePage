@@ -8,6 +8,8 @@
     <result column="goods_img" jdbcType="VARCHAR" property="goodsImg" />
     <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
     <result column="goods_stock" jdbcType="INTEGER" property="goodsStock" />
+    <result column="goods_seckill_begintime" jdbcType="TIMESTAMP" property="goodsSeckillBegintime" />
+    <result column="goods_seckill_endtime" jdbcType="TIMESTAMP" property="goodsSeckillEndtime" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.wargod.domain.vo.GoodVo">
     <result column="goods_detail" jdbcType="LONGVARCHAR" property="goodsDetail" />
@@ -71,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    gid, goods_name, goods_title, goods_img, goods_price, goods_stock
+    gid, goods_name, goods_title, goods_img, goods_price, goods_stock, goods_seckill_begintime, 
+    goods_seckill_endtime
   </sql>
   <sql id="Blob_Column_List">
     goods_detail
@@ -127,9 +130,11 @@
   <insert id="insert" parameterType="com.wargod.domain.vo.GoodVo">
     insert into t_goods (gid, goods_name, goods_title, 
       goods_img, goods_price, goods_stock, 
+      goods_seckill_begintime, goods_seckill_endtime, 
       goods_detail)
     values (#{gid,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsTitle,jdbcType=VARCHAR}, 
       #{goodsImg,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DECIMAL}, #{goodsStock,jdbcType=INTEGER}, 
+      #{goodsSeckillBegintime,jdbcType=TIMESTAMP}, #{goodsSeckillEndtime,jdbcType=TIMESTAMP}, 
       #{goodsDetail,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.wargod.domain.vo.GoodVo">
@@ -153,6 +158,12 @@
       <if test="goodsStock != null">
         goods_stock,
       </if>
+      <if test="goodsSeckillBegintime != null">
+        goods_seckill_begintime,
+      </if>
+      <if test="goodsSeckillEndtime != null">
+        goods_seckill_endtime,
+      </if>
       <if test="goodsDetail != null">
         goods_detail,
       </if>
@@ -175,6 +186,12 @@
       </if>
       <if test="goodsStock != null">
         #{goodsStock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSeckillBegintime != null">
+        #{goodsSeckillBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsSeckillEndtime != null">
+        #{goodsSeckillEndtime,jdbcType=TIMESTAMP},
       </if>
       <if test="goodsDetail != null">
         #{goodsDetail,jdbcType=LONGVARCHAR},
@@ -208,6 +225,12 @@
       <if test="record.goodsStock != null">
         goods_stock = #{record.goodsStock,jdbcType=INTEGER},
       </if>
+      <if test="record.goodsSeckillBegintime != null">
+        goods_seckill_begintime = #{record.goodsSeckillBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.goodsSeckillEndtime != null">
+        goods_seckill_endtime = #{record.goodsSeckillEndtime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.goodsDetail != null">
         goods_detail = #{record.goodsDetail,jdbcType=LONGVARCHAR},
       </if>
@@ -224,6 +247,8 @@
       goods_img = #{record.goodsImg,jdbcType=VARCHAR},
       goods_price = #{record.goodsPrice,jdbcType=DECIMAL},
       goods_stock = #{record.goodsStock,jdbcType=INTEGER},
+      goods_seckill_begintime = #{record.goodsSeckillBegintime,jdbcType=TIMESTAMP},
+      goods_seckill_endtime = #{record.goodsSeckillEndtime,jdbcType=TIMESTAMP},
       goods_detail = #{record.goodsDetail,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -236,7 +261,9 @@
       goods_title = #{record.goodsTitle,jdbcType=VARCHAR},
       goods_img = #{record.goodsImg,jdbcType=VARCHAR},
       goods_price = #{record.goodsPrice,jdbcType=DECIMAL},
-      goods_stock = #{record.goodsStock,jdbcType=INTEGER}
+      goods_stock = #{record.goodsStock,jdbcType=INTEGER},
+      goods_seckill_begintime = #{record.goodsSeckillBegintime,jdbcType=TIMESTAMP},
+      goods_seckill_endtime = #{record.goodsSeckillEndtime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -259,6 +286,12 @@
       <if test="goodsStock != null">
         goods_stock = #{goodsStock,jdbcType=INTEGER},
       </if>
+      <if test="goodsSeckillBegintime != null">
+        goods_seckill_begintime = #{goodsSeckillBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsSeckillEndtime != null">
+        goods_seckill_endtime = #{goodsSeckillEndtime,jdbcType=TIMESTAMP},
+      </if>
       <if test="goodsDetail != null">
         goods_detail = #{goodsDetail,jdbcType=LONGVARCHAR},
       </if>
@@ -272,6 +305,8 @@
       goods_img = #{goodsImg,jdbcType=VARCHAR},
       goods_price = #{goodsPrice,jdbcType=DECIMAL},
       goods_stock = #{goodsStock,jdbcType=INTEGER},
+      goods_seckill_begintime = #{goodsSeckillBegintime,jdbcType=TIMESTAMP},
+      goods_seckill_endtime = #{goodsSeckillEndtime,jdbcType=TIMESTAMP},
       goods_detail = #{goodsDetail,jdbcType=LONGVARCHAR}
     where gid = #{gid,jdbcType=INTEGER}
   </update>
@@ -281,7 +316,9 @@
       goods_title = #{goodsTitle,jdbcType=VARCHAR},
       goods_img = #{goodsImg,jdbcType=VARCHAR},
       goods_price = #{goodsPrice,jdbcType=DECIMAL},
-      goods_stock = #{goodsStock,jdbcType=INTEGER}
+      goods_stock = #{goodsStock,jdbcType=INTEGER},
+      goods_seckill_begintime = #{goodsSeckillBegintime,jdbcType=TIMESTAMP},
+      goods_seckill_endtime = #{goodsSeckillEndtime,jdbcType=TIMESTAMP}
     where gid = #{gid,jdbcType=INTEGER}
   </update>
 </mapper>

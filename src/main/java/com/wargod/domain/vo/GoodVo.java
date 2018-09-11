@@ -1,6 +1,7 @@
 package com.wargod.domain.vo;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class GoodVo {
     private Integer gid;
@@ -14,6 +15,10 @@ public class GoodVo {
     private BigDecimal goodsPrice;
 
     private Integer goodsStock;
+
+    private Date goodsSeckillBegintime;
+
+    private Date goodsSeckillEndtime;
 
     private String goodsDetail;
 
@@ -65,11 +70,42 @@ public class GoodVo {
         this.goodsStock = goodsStock;
     }
 
+    public Date getGoodsSeckillBegintime() {
+        return goodsSeckillBegintime;
+    }
+
+    public void setGoodsSeckillBegintime(Date goodsSeckillBegintime) {
+        this.goodsSeckillBegintime = goodsSeckillBegintime;
+    }
+
+    public Date getGoodsSeckillEndtime() {
+        return goodsSeckillEndtime;
+    }
+
+    public void setGoodsSeckillEndtime(Date goodsSeckillEndtime) {
+        this.goodsSeckillEndtime = goodsSeckillEndtime;
+    }
+
     public String getGoodsDetail() {
         return goodsDetail;
     }
 
     public void setGoodsDetail(String goodsDetail) {
         this.goodsDetail = goodsDetail == null ? null : goodsDetail.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "GoodVo{" +
+                "gid=" + gid +
+                ", goodsName='" + goodsName + '\'' +
+                ", goodsTitle='" + goodsTitle + '\'' +
+                ", goodsImg='" + goodsImg + '\'' +
+                ", goodsPrice=" + goodsPrice +
+                ", goodsStock=" + goodsStock +
+                ", goodsSeckillBegintime=" + goodsSeckillBegintime +
+                ", goodsSeckillEndtime=" + goodsSeckillEndtime +
+                ", goodsDetail='" + goodsDetail + '\'' +
+                '}';
     }
 }

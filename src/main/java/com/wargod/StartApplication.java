@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * @date 2018/9/9 23:35
  */
 @SpringBootApplication
-@MapperScan("com.wo.dao")
+@MapperScan("com.wargod.dao")
 public class StartApplication {
 
     public static void main(String args[]){
