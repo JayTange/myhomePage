@@ -12,7 +12,7 @@ spring:
     mode: html
 
 server:
-  port: 8080
+  port: 80
 
 mybatis:
   type-aliases-package: com.wargod.dao
