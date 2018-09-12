@@ -6,6 +6,7 @@ import com.wargod.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -21,5 +22,18 @@ public class GoodsController {
         List<GoodVo> goodVoList = goodsService.getGoodsList();
         request.setAttribute(WebConstant.GOODS_LIST,goodVoList);
         return "goodslist";
+    }
+
+    @GetMapping(value = "/{gid}/detail")
+    public String goodDetail(@PathVariable("gid")Integer gid,HttpServletRequest request){
+        if (gid == null){
+            return "redirect:/";
+        }
+        GoodVo goodVo = goodsService.getGoodsById(gid);
+        if (goodVo == null){
+            return "redirect:/";
+        }
+        request.setAttribute(WebConstant.GOODS_DETAIL,goodVo);
+        return "detail";
     }
 }

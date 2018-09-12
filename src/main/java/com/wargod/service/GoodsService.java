@@ -25,4 +25,15 @@ public class GoodsService {
         return goodVoList;
     }
 
+    /**
+     * 查询
+     *
+     * @param gid
+     * @return
+     */
+    public GoodVo getGoodsById(Integer gid){
+        GoodVo goodVo = goodVoMapper.selectByPrimaryKey(gid);
+        return goodVo;
+    }
+
 }
