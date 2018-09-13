@@ -33,10 +33,10 @@
                         <td th:text="${sk.goodsName}"></td>
                         <td th:text="${sk.goodsStock}">/td>
                         <td>
-                            <th:block th:text="${sk.goodsSeckillBegintime}" />
+                            <th:block th:text="${commons.fmtdate(sk.goodsSeckillBegintime)}" />
                         </td>
                         <td>
-                            <th:block th:text="${sk.goodsSeckillEndtime}"/>
+                            <th:block th:text="${commons.fmtdate(sk.goodsSeckillEndtime)}"/>
                         </td>
                         <td><a class="btn btn-info" th:href="@{'/'+${sk.gid}+'/detail'}" target="_blank">详情</a></td>
                     </tr>

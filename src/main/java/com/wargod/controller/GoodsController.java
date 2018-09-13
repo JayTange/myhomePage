@@ -1,14 +1,17 @@
 package com.wargod.controller;
 
 import com.wargod.constant.WebConstant;
+import com.wargod.domain.bo.RestResponseBo;
 import com.wargod.domain.vo.GoodVo;
 import com.wargod.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -35,5 +38,12 @@ public class GoodsController {
         }
         request.setAttribute(WebConstant.GOODS_DETAIL,goodVo);
         return "detail";
+    }
+
+    @GetMapping(value = "/time/now")
+    @ResponseBody
+    public RestResponseBo getNowTime(){
+        Date date = new Date();
+        return RestResponseBo.ok(date.getTime());
     }
 }

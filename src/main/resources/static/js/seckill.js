@@ -52,7 +52,6 @@ var seckill = {
                         //验证通过　　刷新页面
                         window.location.reload();
                     } else {
-                        //todo 错误文案信息抽取到前端字典里
                         $('#killPhoneMessage').hide().html('<label class="label label-danger">手机号错误!</label>').show(300);
                     }
                 });
@@ -65,7 +64,7 @@ var seckill = {
             var seckillId = params['seckillId'];
             $.get(seckill.URL.now(), {}, function (result) {
                 if (result) {
-                    var nowTime = result['data'];
+                    var nowTime = result['payload'];
                     //时间判断 计时交互
                     seckill.countDown(seckillId, nowTime, startTime, endTime);
                 } else {
@@ -83,7 +82,7 @@ var seckill = {
         $.post(seckill.URL.exposer(seckillId), {}, function (result) {
             //在回调函数种执行交互流程
             if (result) {
-                var exposer = result.data;
+                var exposer = result.payload;
                 if (exposer) {
                     //开启秒杀
                     //获取秒杀地址
@@ -98,7 +97,7 @@ var seckill = {
                         //2.发送秒杀请求执行秒杀
                         $.post(killUrl, {}, function (result) {
                             if (result) {
-                                var killResult = result['data'];
+                                var killResult = result['payload'];
                                 var state = killResult['state'];
                                 var stateInfo = killResult['stateInfo'];
                                 //显示秒杀结果
