@@ -5,12 +5,11 @@ import com.wargod.domain.bo.RestResponseBo;
 import com.wargod.domain.dto.Exposer;
 import com.wargod.domain.vo.GoodsVo;
 import com.wargod.service.GoodsService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -18,6 +17,8 @@ import java.util.List;
 
 @Controller
 public class GoodsController {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     GoodsService goodsService;
@@ -65,10 +66,24 @@ public class GoodsController {
         return RestResponseBo.ok(date.getTime());
     }
 
+    @PostMapping(value = "/{seckillId}/exposer")
+    @ResponseBody
+    public RestResponseBo<Exposer> exposerUrl(@PathVariable("seckillId") Integer seckillId){
+        try {
+            Exposer exposer = goodsService.exportSeckillUrl(seckillId);
+            return RestResponseBo.ok(exposer);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            return RestResponseBo.fail("获取秒杀地址失败");
+        }
+    }
+
     @PostMapping(value = "/{seckillId}/{md5}/execution")
-    public RestResponseBo<Exposer> exposerUrl(@PathVariable("seckillId") Long seckillId){
+    @ResponseBody
+    public RestResponseBo executeSecKill(@PathVariable("seckillId") Long seckillId, @PathVariable("md5") String md5, @CookieValue(value = "userPhone", required = false) Long userPhone){
+        if (userPhone==null){
+            return RestResponseBo.fail("请先注册");
+        }
 
-
-        return RestResponseBo.ok();
     }
 }
