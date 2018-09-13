@@ -3,7 +3,7 @@ package com.wargod.domain.vo;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class GoodVo {
+public class GoodsVo {
     private Integer gid;
 
     private String goodsName;
@@ -96,7 +96,7 @@ public class GoodVo {
 
     @Override
     public String toString() {
-        return "GoodVo{" +
+        return "GoodsVo{" +
                 "gid=" + gid +
                 ", goodsName='" + goodsName + '\'' +
                 ", goodsTitle='" + goodsTitle + '\'' +

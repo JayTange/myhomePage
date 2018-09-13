@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wargod.dao.GoodVoMapper">
-  <resultMap id="BaseResultMap" type="com.wargod.domain.vo.GoodVo">
+<mapper namespace="com.wargod.dao.GoodsVoMapper">
+  <resultMap id="BaseResultMap" type="com.wargod.domain.vo.GoodsVo">
     <id column="gid" jdbcType="INTEGER" property="gid" />
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
     <result column="goods_title" jdbcType="VARCHAR" property="goodsTitle" />
@@ -11,7 +11,7 @@
     <result column="goods_seckill_begintime" jdbcType="TIMESTAMP" property="goodsSeckillBegintime" />
     <result column="goods_seckill_endtime" jdbcType="TIMESTAMP" property="goodsSeckillEndtime" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.wargod.domain.vo.GoodVo">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.wargod.domain.vo.GoodsVo">
     <result column="goods_detail" jdbcType="LONGVARCHAR" property="goodsDetail" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -79,7 +79,7 @@
   <sql id="Blob_Column_List">
     goods_detail
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.wargod.domain.vo.GoodVoExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.wargod.domain.vo.GoodsVoExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -95,7 +95,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.wargod.domain.vo.GoodVoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.wargod.domain.vo.GoodsVoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -121,13 +121,13 @@
     delete from t_goods
     where gid = #{gid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.wargod.domain.vo.GoodVoExample">
+  <delete id="deleteByExample" parameterType="com.wargod.domain.vo.GoodsVoExample">
     delete from t_goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.wargod.domain.vo.GoodVo">
+  <insert id="insert" parameterType="com.wargod.domain.vo.GoodsVo">
     insert into t_goods (gid, goods_name, goods_title, 
       goods_img, goods_price, goods_stock, 
       goods_seckill_begintime, goods_seckill_endtime, 
@@ -137,7 +137,7 @@
       #{goodsSeckillBegintime,jdbcType=TIMESTAMP}, #{goodsSeckillEndtime,jdbcType=TIMESTAMP}, 
       #{goodsDetail,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.wargod.domain.vo.GoodVo">
+  <insert id="insertSelective" parameterType="com.wargod.domain.vo.GoodsVo">
     insert into t_goods
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="gid != null">
@@ -198,7 +198,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.wargod.domain.vo.GoodVoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.wargod.domain.vo.GoodsVoExample" resultType="java.lang.Long">
     select count(*) from t_goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -268,7 +268,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wargod.domain.vo.GoodVo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.wargod.domain.vo.GoodsVo">
     update t_goods
     <set>
       <if test="goodsName != null">
@@ -298,7 +298,7 @@
     </set>
     where gid = #{gid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wargod.domain.vo.GoodVo">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wargod.domain.vo.GoodsVo">
     update t_goods
     set goods_name = #{goodsName,jdbcType=VARCHAR},
       goods_title = #{goodsTitle,jdbcType=VARCHAR},
@@ -310,7 +310,7 @@
       goods_detail = #{goodsDetail,jdbcType=LONGVARCHAR}
     where gid = #{gid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wargod.domain.vo.GoodVo">
+  <update id="updateByPrimaryKey" parameterType="com.wargod.domain.vo.GoodsVo">
     update t_goods
     set goods_name = #{goodsName,jdbcType=VARCHAR},
       goods_title = #{goodsTitle,jdbcType=VARCHAR},
