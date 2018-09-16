@@ -36,4 +36,12 @@ public class GoodVoMapperTest {
         System.out.println(goodVoList);
     }
 
+    @Test
+    public void testReduce(){
+        int gid = 1;
+        Date date = new Date();
+
+        int result=goodVoMapper.reduceNumber(1,date);
+    }
+
 }

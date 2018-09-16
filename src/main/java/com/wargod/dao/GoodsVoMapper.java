@@ -2,6 +2,8 @@ package com.wargod.dao;
 
 import com.wargod.domain.vo.GoodsVo;
 import com.wargod.domain.vo.GoodsVoExample;
+
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -36,4 +38,6 @@ public interface GoodsVoMapper {
     int updateByPrimaryKeyWithBLOBs(GoodsVo record);
 
     int updateByPrimaryKey(GoodsVo record);
+
+    int reduceNumber(@Param("gid")int gid, @Param("killTime")Date killTime);
 }

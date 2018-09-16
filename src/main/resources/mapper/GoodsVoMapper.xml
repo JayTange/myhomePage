@@ -321,4 +321,18 @@
       goods_seckill_endtime = #{goodsSeckillEndtime,jdbcType=TIMESTAMP}
     where gid = #{gid,jdbcType=INTEGER}
   </update>
+
+  <update id="reduceNumber" parameterType="com.wargod.domain.vo.GoodsVo">
+    UPDATE t_goods
+
+    SET goods_stock = goods_stock - 1
+
+    where gid = #{gid,jdbcType=INTEGER}
+
+    AND goods_stock > 0
+
+    AND goods_seckill_begintime <![CDATA[ <= ]]> #{killTime}
+
+    AND goods_seckill_endtime <![CDATA[ >= ]]> #{killTime}
+  </update>
 </mapper>
