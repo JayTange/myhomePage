@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
@@ -75,7 +76,19 @@ public class GoodsService {
         return new Exposer(true, digestStr, goodsId);
     }
 
-    public SeckillExcution executeSeckill(int seckillId,long userPhone,String md5)throws SeckillException {
+    /**
+     * 执行秒杀
+     *
+     * 使用事务
+     *
+     * @param seckillId
+     * @param userPhone
+     * @param md5
+     * @return
+     * @throws SeckillException
+     */
+    @Transactional
+    public SeckillExcution executeSeckill(int seckillId, long userPhone, String md5) throws SeckillException {
         // 防止重复秒杀
         String orderNum = WebConstant.DIGEST_SALT + userPhone;
         if (md5 == null || !md5.equals(digestAct(seckillId))) {
@@ -98,18 +111,19 @@ public class GoodsService {
                     throw new RepeatKillException("重复秒杀");
                 } else {
                     orderInfoVo.setGoodsId(seckillId);
+                    orderInfoVo.setGoodsCount(1);
                     orderInfoVoMapper.insert(orderInfoVo);
-                    return new SeckillExcution(seckillId, SeckillStatEnum.SUCCESS,orderInfoVo);
+                    return new SeckillExcution(seckillId, SeckillStatEnum.SUCCESS, orderInfoVo);
                 }
             }
 
         } catch (SeckillCloseException e1) {
             throw e1;
-        } catch (RepeatKillException e2){
+        } catch (RepeatKillException e2) {
             throw e2;
-        }catch (Exception e){
-            logger.error("系统内部错误"+e.getMessage());
-            throw  new SeckillException("sec"+e.getMessage());
+        } catch (Exception e) {
+            logger.error("系统内部错误" + e.getMessage());
+            throw new SeckillException("sec" + e.getMessage());
         }
     }
 
@@ -124,7 +138,6 @@ public class GoodsService {
         String digestStr = DigestUtils.md5DigestAsHex(toDigest.getBytes());
         return digestStr;
     }
-
 
 
 }
