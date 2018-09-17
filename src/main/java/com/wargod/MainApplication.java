@@ -18,12 +18,15 @@ import javax.sql.DataSource;
  * @author tangj
  * @date 2018/9/9 23:35
  */
+
+
+
 @SpringBootApplication
 @MapperScan("com.wargod.dao")
-public class StartApplication {
+public class MainApplication {
 
     public static void main(String args[]){
-        new SpringApplication(StartApplication.class).run(args);
+        new SpringApplication(MainApplication.class).run(args);
     }
 
 
