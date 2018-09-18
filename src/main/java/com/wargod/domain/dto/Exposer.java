@@ -3,12 +3,10 @@ package com.wargod.domain.dto;
 public class Exposer {
     private boolean exposed;
 
-    //摘要值
     private String md5;
 
     private long seckillId;
 
-    // 系统时间
     private long now;
 
     private long start;

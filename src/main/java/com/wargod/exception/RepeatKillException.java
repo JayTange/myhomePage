@@ -1,8 +1,5 @@
 package com.wargod.exception;
 
-/**
- * ÷ÿ∏¥√Î…±“Ï≥£
- */
 
 public class RepeatKillException extends SeckillException {
 
