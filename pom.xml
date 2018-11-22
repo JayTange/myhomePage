@@ -8,7 +8,7 @@
     <artifactId>wargod</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -31,6 +31,12 @@
     </parent>
 
     <dependencies>
+
+        <!-- 引入webSocket -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
 
         <!-- 数据库连接池-->
         <dependency>

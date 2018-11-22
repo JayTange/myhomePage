@@ -9,8 +9,9 @@ CREATE TABLE t_user(
   user_name VARCHAR(100) NOT NULL COMMENT '用户名' ,
   user_password VARCHAR(100)  NOT NULL COMMENT '密码',
   phone_number VARCHAR(22) NOT NULL COMMENT '电话号码',
+  email VARCHAR(64) NOT NULL COMMENT '电子邮件',
   created_time TIMESTAMP DEFAULT current_timestamp NOT NULL COMMENT '创建时间',
-  modified_time TIMESTAMP DEFAULT current_timestamp NOT NULL COMMENT '修改时间',
+  modified_time TIMESTAMP COMMENT '修改时间',
 
   PRIMARY KEY (uid)
 );
